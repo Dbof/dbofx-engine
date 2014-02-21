@@ -1,4 +1,4 @@
-dbofx-engine
+DbofX Engine
 ============
 
 The DbofX Engine is a 3d game engine built to facilitate the creation of 3d games and graphics.
