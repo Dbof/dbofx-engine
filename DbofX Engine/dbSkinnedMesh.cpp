@@ -37,7 +37,7 @@ namespace dbx
 	}
 
 	
-	void dbSkinnedMesh::Load(char fileName[])
+	void dbSkinnedMesh::Load(const char fileName[])
 	{
 		BoneHierarchyLoader boneHierarchy;
 		//Load a bone hierarchy from a file

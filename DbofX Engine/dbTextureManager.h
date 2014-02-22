@@ -31,7 +31,7 @@ namespace res
 		bool IsInitiated() { return is_init_; }
 
 		// list methods
-		bool AddTexture(TEX_TYPE Type, const std::string &filename, bool ManagedPool, bool MipMaps, core::dbColor ColorKey = core::dbColor(-1.f));
+		TEXTURE_ITEM* AddTexture(TEX_TYPE Type, const std::string &filepath, bool ManagedPool, bool MipMaps, core::dbColor ColorKey = core::dbColor(-1.f));
 		TEXTURE_ITEM* SearchTexture(const std::string &filename);
 		bool DeleteTexture(const std::string &filename);
 		
@@ -42,14 +42,15 @@ namespace res
 		dbTextureManager();
 
 		// private methods
-		bool AddEntry(LPDIRECT3DBASETEXTURE9 texture,
-							std::string  filename,
-							int width, int heigth, int depth,
-							D3DFORMAT format, 
-							bool poolManaged,
-							bool MipMaps,
-							D3DCOLOR ColorKey,
-							TEX_TYPE iType);
+		TEXTURE_ITEM* AddEntry(std::string identifier,
+						LPDIRECT3DBASETEXTURE9 texture,
+						std::string  filename,
+						int width, int heigth, int depth,
+						D3DFORMAT format, 
+						bool poolManaged,
+						bool MipMaps,
+						D3DCOLOR ColorKey,
+						TEX_TYPE iType);
 		int GetFreeEntry();
 
 		// private members

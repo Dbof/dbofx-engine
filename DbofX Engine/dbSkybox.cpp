@@ -30,9 +30,10 @@ bool dbSkybox::Init(const string& fname)
 		return false;
 
 	this->sky_size_	= sky_size_;
-	texture_name_			= fname;
-
-	texture_index_		= res::dbTextureManager::GetInstance()->AddTexture(res::TEX_CUBE, fname, false, false, dbColor(0.f));	//load texture
+	texture_name_	= fname;
+	texture_item_	= res::dbTextureManager::GetInstance()->AddTexture(res::TEX_CUBE, fname, false, false, dbColor(0.f));	//load texture
+	if (texture_item_ == NULL)
+		return false;
 	return true;
 }
 
@@ -132,7 +133,7 @@ void dbSkybox::Render(const dbVector3& position)
 	dev->SetStreamSource(0, vertex_buffer_, 0, sizeof(SKYBOX_VERTEX));
 	dev->SetIndices(index_buffer_);
 	dev->SetFVF(D3DFVF_CUSTOMVERTEX);
-	dbDevice::setTexture(res::dbTextureManager::GetInstance()->SearchTexture(texture_name_));
+	dbDevice::setTexture(texture_item_);
 
 	dbDevice::setTransform(dbMatrixTranslation(position));
 	

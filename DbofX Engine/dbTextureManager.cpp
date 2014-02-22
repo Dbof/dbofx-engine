@@ -136,13 +136,14 @@ bool dbTextureManager::Reset()
 
 //**********************************************************************
 // LIST METHODS
-bool dbTextureManager::AddTexture(TEX_TYPE Type, const string &filename, bool ManagedPool, bool MipMaps, dbColor ColorKey)
+TEXTURE_ITEM* dbTextureManager::AddTexture(TEX_TYPE Type, const string &filepath, bool ManagedPool, bool MipMaps, dbColor ColorKey)
 {
 	D3DPOOL tmp_pool = D3DPOOL_DEFAULT;
 	DWORD	mipFilter = D3DX_FILTER_NONE;
 	int		mipLevels = 1;
-	bool	index = false;
+	TEXTURE_ITEM* item = NULL;
 	D3DCOLOR colorkey = (ColorKey.r == -1) ? 0 : ColorKey;	// disable Colorkey if -1 was passed
+	string filename = filepath.substr(filepath.find_last_of("/\\")+1);
 
 	if (!is_init_)
 	{
@@ -156,7 +157,7 @@ bool dbTextureManager::AddTexture(TEX_TYPE Type, const string &filename, bool Ma
 		return false;
 	}
 
-	if (!FileExist((char*)filename.c_str()))
+	if (!FileExist((char*)filepath.c_str()))
 	{
 		DBX_ERROR("Texture does not exist or could not be found.");
 		return false;
@@ -172,7 +173,7 @@ bool dbTextureManager::AddTexture(TEX_TYPE Type, const string &filename, bool Ma
 	if (tmp_itm)		//Texture already exists
 	{
 		DBX_WARN("Texture already exists!");
-		return false;
+		return tmp_itm;
 	}
 
 	if (ManagedPool)
@@ -187,7 +188,7 @@ bool dbTextureManager::AddTexture(TEX_TYPE Type, const string &filename, bool Ma
 	{
 	case TEX_2D:
 		hr = D3DXCreateTextureFromFileEx(	dbDevice::getDevice(),
-											filename.c_str(),
+											filepath.c_str(),
 											D3DX_DEFAULT,
 											D3DX_DEFAULT, 
 											mipLevels,
@@ -208,8 +209,9 @@ bool dbTextureManager::AddTexture(TEX_TYPE Type, const string &filename, bool Ma
 
 		tmp_tex->GetLevelDesc(0, &SurfaceDesc);
 
-		index = AddEntry(	tmp_tex,
-							filename,
+		item = AddEntry(	filename,
+							tmp_tex,
+							filepath,
 							SurfaceDesc.Width,
 							SurfaceDesc.Height,
 							1,
@@ -222,7 +224,7 @@ bool dbTextureManager::AddTexture(TEX_TYPE Type, const string &filename, bool Ma
 	break;
 	
 	case TEX_CUBE:
-		hr = D3DXCreateCubeTextureFromFileEx(	dbDevice::getDevice(), filename.c_str(), D3DX_DEFAULT,
+		hr = D3DXCreateCubeTextureFromFileEx(	dbDevice::getDevice(), filepath.c_str(), D3DX_DEFAULT,
 												mipLevels, 
 												NULL,
 												D3DFMT_UNKNOWN, 
@@ -240,8 +242,9 @@ bool dbTextureManager::AddTexture(TEX_TYPE Type, const string &filename, bool Ma
 
 		tmp_tex_cube->GetLevelDesc(0, &SurfaceDesc);		
 		
-		index =	AddEntry(	tmp_tex_cube,
-							filename,
+		item = AddEntry(	filename,
+							tmp_tex_cube,
+							filepath,
 							SurfaceDesc.Width,
 							SurfaceDesc.Height,
 							1,
@@ -253,19 +256,20 @@ bool dbTextureManager::AddTexture(TEX_TYPE Type, const string &filename, bool Ma
 	break;
 	}
 
-	if (!index)
+	if (item == NULL)
 	{
 		DBX_ERROR("Could not load texture to list.");
 		return false;
 	}
 
 	num_textures_++;
-	return index;
+	return item;
 }
 
 //**********************************************************************
 
-bool dbTextureManager::AddEntry(LPDIRECT3DBASETEXTURE9 texture,
+TEXTURE_ITEM* dbTextureManager::AddEntry(std::string identifier,
+						LPDIRECT3DBASETEXTURE9 texture,
 						string filename,
 						int width, int heigth, int depth,
 						D3DFORMAT format, 
@@ -289,9 +293,9 @@ bool dbTextureManager::AddEntry(LPDIRECT3DBASETEXTURE9 texture,
 	tex.Exists = true;
 
 	// add to map
-	texture_item_map_[filename] = tex;
+	texture_item_map_[identifier] = tex;
 
-	return true;
+	return &texture_item_map_[identifier];
 }
 
 //**********************************************************************

@@ -33,9 +33,9 @@ namespace scene
 		int*						index_arr_;
 		LPDIRECT3DINDEXBUFFER9		index_buffer_;
 		LPDIRECT3DVERTEXBUFFER9		vertex_buffer_;
-
+		
 		std::string					texture_name_;
-		int							texture_index_;
+		res::TEXTURE_ITEM*			texture_item_;
 	
 		float						sky_size_;
 

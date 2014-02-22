@@ -8,7 +8,7 @@ namespace dbx
 	public:
 		dbSkinnedMesh();
 		~dbSkinnedMesh();
-		void Load(char fileName[]);
+		void Load(const char fileName[]);
 		void SetupBoneMatrixPointers(Bone* bone);
 		void Render(Bone* bone);
 

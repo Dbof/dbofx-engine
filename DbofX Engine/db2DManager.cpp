@@ -138,6 +138,12 @@ void db2DManager::DrawImage3D( res::TEXTURE_ITEM* item, RECT* sourceRect, core::
 
 void db2DManager::DrawBillboard(res::TEXTURE_ITEM* item, RECT* sourceRect, dbVector3 destination, dbColor color, bool useAlpha)
 {
+	if (item == NULL)
+	{
+		DBX_ERROR("Texture item is NULL");
+		return;
+	}
+
 	if (batched_draw_2D_ || batched_draw_3D_)
 	{
 		DBX_WARN("Drawing billboard not possible in Begin2D or Begin3D block!");
