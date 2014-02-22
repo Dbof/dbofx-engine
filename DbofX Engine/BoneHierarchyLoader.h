@@ -7,7 +7,7 @@ namespace dbx
 {
 	struct DBX_API Bone : public D3DXFRAME
 	{
-		D3DXMATRIX CombinedTransformationMatrix;
+		core::dbMatrix CombinedTransformationMatrix;
 	};
 
 	struct DBX_API BoneMesh : public D3DXMESHCONTAINER
@@ -18,9 +18,9 @@ namespace dbx
 		
 		DWORD NumAttributeGroups;					// Number attribute groups
 		D3DXATTRIBUTERANGE* attributeTable;			// Attribute table
-		D3DXMATRIX** boneMatrixPtrs;				// Pointers to bone matrices
-		D3DXMATRIX* boneOffsetMatrices;				// Bone offset matrices
-		D3DXMATRIX* currentBoneMatrices;			// Current bone matrices
+		core::dbMatrix** boneMatrixPtrs;				// Pointers to bone matrices
+		core::dbMatrix* boneOffsetMatrices;				// Bone offset matrices
+		core::dbMatrix* currentBoneMatrices;			// Current bone matrices
 	};
 
 	class DBX_API BoneHierarchyLoader : public ID3DXAllocateHierarchy
@@ -40,7 +40,7 @@ namespace dbx
 		STDMETHOD(DestroyMeshContainer)(THIS_ LPD3DXMESHCONTAINER pMeshContainerToFree); 
 	};
 
-	DBX_API void CalculateWorldMatrix(Bone* bone, D3DXMATRIX* parentMat);
-}
+	DBX_API void CalculateWorldMatrix(Bone* bone, const core::dbMatrix& parentMat);
+}  // namespace
 
 #endif

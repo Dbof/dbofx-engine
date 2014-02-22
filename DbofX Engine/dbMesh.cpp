@@ -13,25 +13,23 @@ dbMesh::dbMesh(const string& id) : dbSceneNode(id)
 	ZeroMemory(this, sizeof(dbMesh));
 	
 	identifier_					= id;
-	mesh_matrix_					= dbMatrixIdentity();
 	node_pos_					= dbVector3(0.f, 0.f, 0.f);
 	node_right_					= dbVector3(1.f, 0.f, 0.f);
-	node_up_						= dbVector3(0.f, 1.f, 0.f);
+	node_up_					= dbVector3(0.f, 1.f, 0.f);
 	node_direction_				= dbVector3(0.f, 0.f, 1.f);
 	node_movespeed_				= 1.f;
 	node_rotationspeed_			= 1.f;
-	node_rotationx_ = node_rotationy_ = node_rotationz_ = 0.f;
-	mesh_scale_ = dbVector3(1.f, 1.f, 1.f);
-
+	mesh_scale_					= dbVector3(1.f, 1.f, 1.f);
+	node_rotationx_	= node_rotationy_ = node_rotationz_ = 0.f;
 	mat_rotationx_ = mat_rotationy_ = mat_rotationz_ = dbMatrixIdentity();
 
 	x_filename_	= "";
-	num_of_materials_	= 1;
-	d3d_material_			= NULL;	
-	d3d_texture_			= NULL;
-	d3d_mesh_		= NULL;
-	is_init_		= use_materials_ = use_textures_ = false;
-	d3d_mesh_fvf_		= D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX2;
+	num_of_materials_			= 1;
+	d3d_material_				= NULL;	
+	d3d_texture_				= NULL;
+	d3d_mesh_					= NULL;
+	is_init_	= use_materials_ = use_textures_ = false;
+	d3d_mesh_fvf_				= D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX2;
 }
 
 
@@ -256,6 +254,6 @@ dbMatrix dbMesh::GetMatrix()
 	
 	viewMatrix = dbMatrixScaling(mesh_scale_) * dbMatrixInvert(viewMatrix);
 	return viewMatrix;	// SRT = scale, rotate, translate
-};
+}
 
 }} // namespace

@@ -6,7 +6,7 @@ namespace dbx
 namespace scene
 {
 	// little enumeration for standard shapes
-	enum MESH_STANDARD 
+	enum MESH_STANDARD
 	{ 
 		MS_BOX,
 		MS_SPHERE,
@@ -63,7 +63,6 @@ namespace scene
 		DWORD						num_of_materials_;
 		DWORD						d3d_mesh_fvf_;
 
-		core::dbMatrix				view_matrix_, mesh_matrix_;
 		core::dbVector3				mesh_scale_;
 
 		std::string					x_filename_;		// full path of .x

@@ -13,7 +13,7 @@ namespace dbx
 		}
 		
 		D3DXMatrixIdentity(&b->TransformationMatrix);
-		D3DXMatrixIdentity(&b->CombinedTransformationMatrix);
+		D3DXMatrixIdentity((D3DXMATRIX*)&b->CombinedTransformationMatrix);
 
 		*ppNewFrame = (LPD3DXFRAME)b;
 		return S_OK;
@@ -98,8 +98,8 @@ namespace dbx
 
 			// Create bone offset and current matrices
 			int NumBones = pSkinInfo->GetNumBones();
-			boneMesh->boneOffsetMatrices = new D3DXMATRIX[NumBones];
-			boneMesh->currentBoneMatrices = new D3DXMATRIX[NumBones];
+			boneMesh->boneOffsetMatrices = new core::dbMatrix[NumBones];
+			boneMesh->currentBoneMatrices = new core::dbMatrix[NumBones];
 
 			// get bone offset matrices
 			for (int i = 0; i < NumBones; i++)
@@ -138,15 +138,15 @@ namespace dbx
 	}
 
 
-	void CalculateWorldMatrix(Bone* bone, D3DXMATRIX* parentMat)
+	void CalculateWorldMatrix(Bone* bone, const core::dbMatrix& parentMat)
 	{
 		if (bone == NULL)
 			return;
 
 		//Calculate the combined transformation matrix
-		D3DXMatrixMultiply(&bone->CombinedTransformationMatrix,
+		D3DXMatrixMultiply((D3DXMATRIX*)&bone->CombinedTransformationMatrix,
 			&bone->TransformationMatrix,
-			parentMat);
+			(D3DXMATRIX*)&parentMat);
 		
 		//Perform the same calculation on all siblings...
 		if(bone->pFrameSibling)
@@ -156,7 +156,7 @@ namespace dbx
 		if(bone->pFrameFirstChild)
 		{
 			//Note that we send a different parent matrix to siblings and children!
-			CalculateWorldMatrix((Bone*)bone->pFrameFirstChild, &bone->CombinedTransformationMatrix);
+			CalculateWorldMatrix((Bone*)bone->pFrameFirstChild, bone->CombinedTransformationMatrix);
 		}
 	}
 }

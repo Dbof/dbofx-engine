@@ -57,7 +57,7 @@ namespace dbx
 		static core::dbMatrix setProjectionMat(float FOV, float nearPlane, float farPlane);
 		//static bool setMaterial(D3DMATERIAL9 mat);
 		static bool setAnimRate(float a_rate);
-		static bool setTransform(core::dbMatrix matTransform);
+		static bool setTransform(const core::dbMatrix& matTransform);
 		static bool setTexture(res::TEXTURE_ITEM* texture, DWORD textureStage = 0);
 	
 	

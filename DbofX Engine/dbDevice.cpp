@@ -730,7 +730,7 @@ bool dbDevice::setAnimRate(float a_rate)
 
 //**********************************************************************
 
-bool dbDevice::setTransform(dbMatrix matTrans)
+bool dbDevice::setTransform(const dbMatrix& matTrans)
 {
 	if (FAILED( d3ddev->SetTransform(D3DTS_WORLD, (const D3DMATRIX*)&matTrans) ))
 		return false;

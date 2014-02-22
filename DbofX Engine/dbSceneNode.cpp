@@ -45,13 +45,13 @@ void dbSceneNode::Init()		// used by constructors to initialize data
 	ZeroMemory(this, sizeof(dbSceneNode));	// this deletes the vector "childNodes"
 
 	// few default values for the object
-	node_pos_						= dbVector3(0.f, 0.f, -5.f);
+	node_pos_						= dbVector3(0.f, 0.f, 0.f);
 	node_right_						= dbVector3(1.f, 0.f, 0.f);
-	node_up_							= dbVector3(0.f, 1.f, 0.f);
+	node_up_						= dbVector3(0.f, 1.f, 0.f);
 	node_direction_					= dbVector3(0.f, 0.f, 1.f);
 	node_movespeed_					= 1.f;
 	node_rotationspeed_				= 1.f;
-	elapsed_time_							= 1.f;
+	elapsed_time_					= 1.f;
 	node_rotationx_ = node_rotationy_ = node_rotationz_ = 0.f;
 	mat_rotationx_ = mat_rotationy_		= mat_rotationz_ = dbMatrixIdentity();
 }

@@ -3,28 +3,55 @@
 
 namespace dbx 
 {
-	class DBX_API dbSkinnedMesh
+namespace scene
+{
+	class DBX_API dbSkinnedMesh : public dbSceneNode
 	{
 	public:
-		dbSkinnedMesh();
+		// private constructor
+		dbSkinnedMesh(const std::string& identifier);
 		~dbSkinnedMesh();
-		void Load(const char fileName[]);
-		void SetupBoneMatrixPointers(Bone* bone);
-		void Render(Bone* bone);
 
-		Bone* FindBone(LPCSTR name);
-		Bone* GetRoot() { return (Bone*)m_pRootBone; }
-		void UpdateMatrices(Bone* bone, D3DXMATRIX *parentMatrix);
-		void SetTransform(Bone* bone, core::dbMatrix &transformMat, boolean recursive);
-		void Move(float delta);
+		void Init(const std::string filePath);
+		bool IsInitialized()	{ return is_init_; };
+
+		bool Render(Bone* bone);
+		
+		// change mesh
+		void Scale(const core::dbVector3 &factor);
+
+		Bone* FindBone(std::string name);
+		Bone* GetRoot() { return pRootBone_; }
+
+		void UpdateMatrices(Bone* bone, const core::dbMatrix& parentMatrix);
+		void SetBoneTransform(Bone* bone, const core::dbMatrix& transformMat, boolean recursive);
+		core::dbMatrix* GetBoneTransform(Bone* bone);
+
+		// alpha blending
+		void EnableAlphaBlending(bool enabled) { use_alpha_ = enabled; }
+
+		core::dbMatrix GetMatrix();	// used for transformation
+
+		void Animate(float delta);
 
 	private:
-		D3DXFRAME* m_pRootBone;
-		ID3DXAnimationController* m_pAnimControl;
-		void Cleanup(D3DXFRAME* b);
+		friend class dbScene;
+
+		void SetupBoneMatrixPointers(Bone* bone);
+		void Cleanup(Bone* b);
+		
+		bool						is_init_;
+		bool						use_materials_;	// TODO
+		bool						use_textures_; // TODO
+		bool						use_alpha_; // TODO
+		core::dbVector3				mesh_scale_;
+		core::dbMatrix				viewMatrix_;
+
+		Bone*						pRootBone_;
+		ID3DXAnimationController*	pAnimControl_;
 
 		int actualPosition;
 	};
-}
+}} // namespace
 
 #endif

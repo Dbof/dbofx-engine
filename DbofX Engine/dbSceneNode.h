@@ -42,7 +42,7 @@ namespace scene
 	
 		// getter methods
 		std::string GetId()				{ return identifier_; }
-		core::dbVector3 GetPos()			{ return node_pos_; }
+		core::dbVector3 GetPos()		{ return node_pos_; }
 		core::dbVector3 GetDirection()	{ return node_direction_; }
 		core::dbVector3 GetUp()			{ return node_up_; }
 		core::dbVector3 GetRight()		{ return node_right_; }
