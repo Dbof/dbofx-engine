@@ -9,6 +9,7 @@ This project was started in 2010 and was worked on since then.
 The current features will be released in the future, same with a good documentation on how to use it.
 
 Features:
+- Windows-only, later support of OpenGL and other operating systems not planned.
 - Fully coded in C++, pretty easy to use
 - Easy to set up
 - Common settings such as transformation and rendering is done for you automatically
