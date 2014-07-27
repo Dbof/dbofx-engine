@@ -9,6 +9,7 @@
 
 #include <windows.h>			//Windows functions
 #include <vector>
+#include <memory>
 #include <unordered_map>
 #include <fstream>
 #include <list>
@@ -156,10 +157,12 @@ namespace dbx
 #include "dbSceneMgr.h"
 #include "dbDevice.h"
 #include "db2DManager.h"
-#include "dbRenderObject.h"
 
 #include "BoneHierarchyLoader.h"
 #include "dbSkinnedMesh.h"
+
+#include "dbPS.h"
+#include "dbParticleRenderer.h"
 
 namespace dbx
 {

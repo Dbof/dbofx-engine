@@ -135,7 +135,6 @@ namespace scene
 		}
 	}
 
-
 	dbMatrix* dbSkinnedMesh::GetBoneTransform(Bone* bone)
 	{
 		if (bone != NULL)

@@ -1,5 +1,5 @@
-#ifndef SKINNED_MESH_H
-#define SKINNED_MESH_H
+#ifndef _SKINNED_MESH_H
+#define _SKINNED_MESH_H
 
 namespace dbx 
 {
@@ -21,16 +21,16 @@ namespace scene
 		void Scale(const core::dbVector3 &factor);
 
 		Bone* FindBone(std::string name);
-		Bone* GetRoot() { return pRootBone_; }
 
 		void UpdateMatrices(Bone* bone, const core::dbMatrix& parentMatrix);
 		void SetBoneTransform(Bone* bone, const core::dbMatrix& transformMat, boolean recursive);
-		core::dbMatrix* GetBoneTransform(Bone* bone);
 
 		// alpha blending
 		void EnableAlphaBlending(bool enabled) { use_alpha_ = enabled; }
 
-		core::dbMatrix GetMatrix();	// used for transformation
+		core::dbMatrix* GetBoneTransform(Bone* bone);
+		core::dbMatrix GetMatrix();
+		Bone* GetRoot() { return pRootBone_; }
 
 		void Animate(float delta);
 

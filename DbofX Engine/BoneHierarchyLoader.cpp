@@ -2,7 +2,8 @@
 
 namespace dbx 
 {
-	
+namespace scene
+{
 	HRESULT BoneHierarchyLoader::CreateFrame(LPCSTR Name, LPD3DXFRAME *ppNewFrame)
 	{
 		Bone* b = new Bone;
@@ -159,4 +160,4 @@ namespace dbx
 			CalculateWorldMatrix((Bone*)bone->pFrameFirstChild, bone->CombinedTransformationMatrix);
 		}
 	}
-}
+}}  // namespace

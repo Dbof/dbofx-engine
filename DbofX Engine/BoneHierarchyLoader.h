@@ -1,9 +1,9 @@
 #ifndef BONE_HIERARCHY_LOADER_H
 #define BONE_HIERARCHY_LOADER_H
 
-#include "d3dx9anim.h"
-
 namespace dbx
+{
+namespace scene
 {
 	struct DBX_API Bone : public D3DXFRAME
 	{
@@ -37,10 +37,10 @@ namespace dbx
 			LPD3DXSKININFO pSkinInfo, 
 			LPD3DXMESHCONTAINER *ppNewMeshContainer);
 		STDMETHOD(DestroyFrame)(THIS_ LPD3DXFRAME pFrameToFree);
-		STDMETHOD(DestroyMeshContainer)(THIS_ LPD3DXMESHCONTAINER pMeshContainerToFree); 
+		STDMETHOD(DestroyMeshContainer)(THIS_ LPD3DXMESHCONTAINER pMeshContainerToFree);
 	};
 
 	DBX_API void CalculateWorldMatrix(Bone* bone, const core::dbMatrix& parentMat);
-}  // namespace
+}}  // namespace
 
 #endif
