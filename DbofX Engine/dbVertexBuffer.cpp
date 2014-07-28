@@ -101,7 +101,6 @@ bool dbVertexBuffer::Init(int vbsize, int vertexsize, DWORD d3d_fvf, DWORD d3d_u
 			return false;
 		}
 	}
-
 	
 	vertex_buffer_size_ = vbsize;
 	vertex_size_ = vertexsize;
@@ -204,6 +203,7 @@ int dbVertexBuffer::AddVertices(int numVertices, void* pVertex)
 bool dbVertexBuffer::SetCursor(int newpos)
 {
 	cursor_ = newpos;
+	vertex_number_ = 0;
 	return true;
 }
 

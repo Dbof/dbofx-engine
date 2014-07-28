@@ -57,6 +57,12 @@
     <Filter Include="Quelldateien\dbEngine\Classes\video">
       <UniqueIdentifier>{f3d3591c-02f0-432a-badc-5d14c4121864}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\dbEngine\Classes\particle">
+      <UniqueIdentifier>{1777a8db-0304-432b-a546-d268a113ef4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\dbEngine\Classes\particle">
+      <UniqueIdentifier>{8bcf382b-8d65-4725-a0c9-3a531dda9bf2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="utils.cpp">
@@ -152,10 +158,28 @@
     <ClCompile Include="dbFontObject.cpp">
       <Filter>Quelldateien\dbEngine\Classes\scene</Filter>
     </ClCompile>
-    <ClCompile Include="BoneHierarchyLoader.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="dbSkinnedMesh.cpp">
+      <Filter>Quelldateien\dbEngine\Classes\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="BoneHierarchyLoader.cpp">
+      <Filter>Quelldateien\dbEngine\Classes\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="dbPS.cpp">
+      <Filter>Quelldateien\dbEngine\Classes\particle</Filter>
+    </ClCompile>
+    <ClCompile Include="dbEulerUpdater.cpp">
+      <Filter>Quelldateien\dbEngine\Classes\particle</Filter>
+    </ClCompile>
+    <ClCompile Include="dbRoundPosGen.cpp">
+      <Filter>Quelldateien\dbEngine\Classes\particle</Filter>
+    </ClCompile>
+    <ClCompile Include="dbTextureRenderer.cpp">
+      <Filter>Quelldateien\dbEngine\Classes\particle</Filter>
+    </ClCompile>
+    <ClCompile Include="dbBasicTimeEmitter.cpp">
+      <Filter>Quelldateien\dbEngine\Classes\particle</Filter>
+    </ClCompile>
+    <ClCompile Include="dbPointRenderer.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -177,9 +201,6 @@
     </ClInclude>
     <ClInclude Include="random.h">
       <Filter>Headerdateien\.trash</Filter>
-    </ClInclude>
-    <ClInclude Include="dbRenderObject.h">
-      <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="dbColor.h">
       <Filter>Headerdateien\dbEngine\Classes\core</Filter>
@@ -250,14 +271,32 @@
     <ClInclude Include="dbFontObject.h">
       <Filter>Headerdateien\dbEngine\Classes\scene</Filter>
     </ClInclude>
-    <ClInclude Include="BoneHierarchyLoader.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="dbSkinnedMesh.h">
+      <Filter>Headerdateien\dbEngine\Classes\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="BoneHierarchyLoader.h">
+      <Filter>Headerdateien\dbEngine\Classes\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="dbPS.h">
+      <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
+    </ClInclude>
+    <ClInclude Include="dbParticleRenderer.h">
+      <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
+    </ClInclude>
+    <ClInclude Include="dbRoundPosGen.h">
+      <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
+    </ClInclude>
+    <ClInclude Include="dbEulerUpdater.h">
+      <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
+    </ClInclude>
+    <ClInclude Include="dbTextureRenderer.h">
+      <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
+    </ClInclude>
+    <ClInclude Include="dbBasicTimeEmitter.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="TODO.txt" />
+    <ClInclude Include="dbPointRenderer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

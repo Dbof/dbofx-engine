@@ -4,16 +4,16 @@ namespace dbx
 namespace particle
 {
 
-	class dbParticleRenderer
+	class DBX_API dbParticleRenderer
 	{
 	public:
 		dbParticleRenderer() {};
-		virtual ~dbParticleRenderer(void);
+		virtual ~dbParticleRenderer(void) {};
 
-		virtual void generate(dbPS *sys, bool useQuads) = 0;
-		virtual void destroy() = 0;
-		virtual void update() = 0;
-		virtual void render() = 0;
+		virtual void Generate(dbPS *sys, bool useQuads) = 0;
+		virtual void Destroy() = 0;
+		virtual void Update() = 0;
+		virtual void Render() = 0;
 	};
 	
 }}	// namespace

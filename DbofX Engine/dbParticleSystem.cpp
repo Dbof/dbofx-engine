@@ -79,7 +79,7 @@ void dbParticleSystem::Render()
 	
 	hr = d3ddev->SetFVF(dbParticleVertex::FVF);
 	hr = d3ddev->SetStreamSource(0, vertex_buffer_.GetVB(), 0, sizeof(dbParticleVertex));
-	hr = d3ddev->DrawPrimitive(D3DPT_TRIANGLELIST, 0, num_particles_ * 2);
+	hr = d3ddev->DrawPrimitive(D3DPT_TRIANGLELIST, 0, num_particles_*4);
 	
 	// reset settings
 	dbDevice::enableLighting(true);

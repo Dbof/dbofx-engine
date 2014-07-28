@@ -12,6 +12,7 @@
 #include <memory>
 #include <unordered_map>
 #include <fstream>
+#include <assert.h>
 #include <list>
 #include <string>
 #include <math.h>
@@ -163,6 +164,11 @@ namespace dbx
 
 #include "dbPS.h"
 #include "dbParticleRenderer.h"
+#include "dbRoundPosGen.h"
+#include "dbEulerUpdater.h"
+#include "dbTextureRenderer.h"
+#include "dbPointRenderer.h"
+#include "dbBasicTimeEmitter.h"
 
 namespace dbx
 {

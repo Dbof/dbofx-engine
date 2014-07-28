@@ -6,60 +6,62 @@ namespace particle
 {
 	void dbParticleData::Generate(size_t maxSize)
 	{
-		_count = maxSize;
-		_countAlive = 0;
+		count_ = maxSize;
+		count_alive_ = 0;
  
-		_position.reset(new core::dbVector3[maxSize]);
-		_color.reset(new core::dbColor[maxSize]);
-		_startColor.reset(new core::dbVector3[maxSize]);
-		_endColor.reset(new core::dbVector3[maxSize]);
-		_velocity.reset(new core::dbVector3[maxSize]);
-		_acceleration.reset(new core::dbVector3[maxSize]);
-		_time.reset(new core::dbVector3[maxSize]);
-		_alive.reset(new bool[maxSize]);
+		position_.reset(new core::dbVector3[maxSize]);
+		color_.reset(new core::dbColor[maxSize]);
+		startColor_.reset(new core::dbVector3[maxSize]);
+		endColor_.reset(new core::dbVector3[maxSize]);
+		velocity_.reset(new core::dbVector3[maxSize]);
+		acceleration_.reset(new core::dbVector3[maxSize]);
+		time_.reset(new core::dbVector3[maxSize]);
+		alive_.reset(new bool[maxSize]);
 	}
 	
 		void dbParticleData::Kill(size_t id)
 		{
-			if (_countAlive > 0)
+			if (count_alive_ > 0)
 			{
-				_alive[id] = false;
-				SwapData(id, _countAlive -1);
-				_countAlive--;
+				alive_[id] = false;
+				SwapData(id, count_alive_ -1);
+				count_alive_--;
 			}
 		}
 		
 		void dbParticleData::Wake(size_t id)
 		{
-			if (_countAlive < _count)
+			if (count_alive_ < count_)
 			{
-				_alive[id] = true;
-				SwapData(id, _countAlive);
-				_countAlive++;
+				alive_[id] = true;
+				SwapData(id, count_alive_);
+				count_alive_++;
 			}
 		}
 
 		void dbParticleData::SwapData(size_t a, size_t b)
 		{
-			std::swap(_position[a], _position[b]);
-			std::swap(_color[a], _color[b]);
-			std::swap(_startColor[a], _startColor[b]);
-			std::swap(_endColor[a], _endColor[b]);
-			std::swap(_velocity[a], _velocity[b]);
-			std::swap(_acceleration[a], _acceleration[b]);
-			std::swap(_time[a], _time[b]);
-			std::swap(_alive[a], _alive[b]);
+			if (a == b)
+				return;
+			std::swap(position_[a], position_[b]);
+			std::swap(color_[a], color_[b]);
+			std::swap(startColor_[a], startColor_[b]);
+			std::swap(endColor_[a], endColor_[b]);
+			std::swap(velocity_[a], velocity_[b]);
+			std::swap(acceleration_[a], acceleration_[b]);
+			std::swap(time_[a], time_[b]);
+			std::swap(alive_[a], alive_[b]);
 		}
 	////////////////////////////////////////////////////////////////////////////////
 	// dbParticleEmitter class
  	void dbParticleEmitter::Emit(double delta, dbParticleData *p)
 	{
-		const size_t maxNewParticles = static_cast<size_t>(delta * _emitRate);
+		const size_t maxNewParticles = static_cast<size_t>(delta * emitRate_);
 		const size_t startId = p->GetCountAlive();
 		const size_t endId = min(startId + maxNewParticles, p->GetCount() -1);
  
-		for (auto &gen : _generators)
-		gen->Generate(delta, p, startId, endId);
+		for (auto &gen : generators_)
+			gen->Generate(delta, p, startId, endId);
  
 		for (size_t i = startId; i < endId; ++i)
 		{
@@ -72,35 +74,35 @@ namespace particle
 
 	dbPS::dbPS(size_t maxCount)
 	{
-		_count = maxCount;
-		_particles.Generate(maxCount);
-		_aliveParticles.Generate(maxCount);
+		count_ = maxCount;
+		particles_.Generate(maxCount);
+		aliveParticles_.Generate(maxCount);
 
 		for (size_t i = 0; i < maxCount; ++i)
-			_particles._alive[i] = false;
+			particles_.alive_[i] = false;
 	}
 
 	void dbPS::Update(double delta)
 	{
-		for (auto& em : _emitters)
+		for (auto& em : emitters_)
 		{
-			em->Emit(delta, &_particles);
+			em->Emit(delta, &particles_);
 		}
 
-		for (size_t i = 0; i < _count; ++i)
+		for (size_t i = 0; i < count_; ++i)
 		{
-			_particles._acceleration[i] = core::dbVector3();
+			particles_.acceleration_[i] = core::dbVector3();
 		}
 
-		for (auto& up : _updaters)
+		for (auto& up : updaters_)
 		{
-			up->Update(delta, &_particles);
+			up->Update(delta, &particles_);
 		}
 	}
 
 	void dbPS::Reset()
 	{
-		_particles._countAlive = 0;
+		particles_.count_alive_ = 0;
 	}
 
 }}	// namespace

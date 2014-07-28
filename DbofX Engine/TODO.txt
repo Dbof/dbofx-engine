@@ -1,3 +1,0 @@
-TODO:
-
-Add copy constructors to every class

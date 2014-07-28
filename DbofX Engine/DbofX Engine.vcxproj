@@ -27,7 +27,7 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v120_CTP_Nov2012</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -65,7 +65,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>winmm.lib;d3dx9.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>winmm.lib;d3dx9d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(SolutionDir)Lib\DbofX_D.lib</ImportLibrary>
       <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
       <OptimizeReferences>false</OptimizeReferences>
@@ -87,11 +87,13 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <ImportLibrary>$(SolutionDir)Lib\DbofX.lib</ImportLibrary>
+      <AdditionalDependencies>winmm.lib;d3dx9.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BoneHierarchyLoader.cpp" />
     <ClCompile Include="db2DManager.cpp" />
+    <ClCompile Include="dbBasicTimeEmitter.cpp" />
     <ClCompile Include="dbCamera_.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -103,6 +105,7 @@
     </ClCompile>
     <ClCompile Include="dbDirectionalLight.cpp" />
     <ClCompile Include="dbError.cpp" />
+    <ClCompile Include="dbEulerUpdater.cpp" />
     <ClCompile Include="dbIndexBuffer.cpp" />
     <ClCompile Include="dbLight.cpp" />
     <ClCompile Include="dbLightManager.cpp" />
@@ -116,6 +119,9 @@
     <ClCompile Include="dbMesh.cpp" />
     <ClCompile Include="dbParticleSystem.cpp" />
     <ClCompile Include="dbPointLight.cpp" />
+    <ClCompile Include="dbPointRenderer.cpp" />
+    <ClCompile Include="dbPS.cpp" />
+    <ClCompile Include="dbRoundPosGen.cpp" />
     <ClCompile Include="dbSceneMgr.cpp" />
     <ClCompile Include="dbSceneNode.cpp" />
     <ClCompile Include="dbSceneNode_.cpp">
@@ -131,6 +137,7 @@
     <ClCompile Include="dbTerrain.cpp" />
     <ClCompile Include="dbFontObject.cpp" />
     <ClCompile Include="dbTextureManager.cpp" />
+    <ClCompile Include="dbTextureRenderer.cpp" />
     <ClCompile Include="dbVertexBuffer.cpp" />
     <ClCompile Include="random.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -144,20 +151,25 @@
   <ItemGroup>
     <ClInclude Include="BoneHierarchyLoader.h" />
     <ClInclude Include="db2DManager.h" />
+    <ClInclude Include="dbBasicTimeEmitter.h" />
     <ClInclude Include="dbCamera.h" />
     <ClInclude Include="dbColor.h" />
     <ClInclude Include="dbDevice.h" />
     <ClInclude Include="dbDirectionalLight.h" />
     <ClInclude Include="dbError.h" />
+    <ClInclude Include="dbEulerUpdater.h" />
     <ClInclude Include="dbIndexBuffer.h" />
     <ClInclude Include="dbLight.h" />
     <ClInclude Include="dbLightManager.h" />
     <ClInclude Include="dbMatrix.h" />
     <ClInclude Include="dbMesh.h" />
     <ClInclude Include="DbofX.h" />
+    <ClInclude Include="dbParticleRenderer.h" />
     <ClInclude Include="dbParticleSystem.h" />
     <ClInclude Include="dbPointLight.h" />
-    <ClInclude Include="dbRenderObject.h" />
+    <ClInclude Include="dbPointRenderer.h" />
+    <ClInclude Include="dbPS.h" />
+    <ClInclude Include="dbRoundPosGen.h" />
     <ClInclude Include="dbSceneMgr.h" />
     <ClInclude Include="dbSceneNode__.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -173,6 +185,7 @@
     <ClInclude Include="dbTerrain.h" />
     <ClInclude Include="dbFontObject.h" />
     <ClInclude Include="dbTextureManager.h" />
+    <ClInclude Include="dbTextureRenderer.h" />
     <ClInclude Include="dbVertexBuffer.h" />
     <ClInclude Include="random.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -184,9 +197,6 @@
     </ClInclude>
     <ClInclude Include="dbSkybox.h" />
     <ClInclude Include="utils.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

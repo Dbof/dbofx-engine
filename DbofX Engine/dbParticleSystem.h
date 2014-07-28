@@ -15,16 +15,16 @@ namespace video
 
 	struct DBX_API dbParticle
 	{
-		float		lifetime;
+		float			lifetime;
 		core::dbVector3	position;
 		core::dbVector3	velocity;
-		float		friction;
-		float		size;
-		float		delta_size;
-		core::dbColor		color;
-		core::dbColor		delta_color;
-		float		rotation;
-		float		delta_rotation;
+		float			friction;
+		float			size;
+		float			delta_size;
+		core::dbColor	color;
+		core::dbColor	delta_color;
+		float			rotation;
+		float			delta_rotation;
 	};
 
 
