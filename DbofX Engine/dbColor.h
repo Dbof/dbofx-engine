@@ -25,7 +25,7 @@ namespace core
 		};
 
 		// Constructors
-		dbColor(void) {};
+		dbColor(void) : r(1.f), g(1.f), b(1.f), a(1.f) {};
 		dbColor(const dbColor& c) : r(c.r), g(c.g), b(c.b), a(c.a) {};
 		dbColor(const float f) : r(f), g(f), b(f), a(1.f) {};
 		dbColor(const float _r, const float _g, const float _b)	: r(_r), g(_g), b(_b), a(1.0f) {};

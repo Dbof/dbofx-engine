@@ -180,11 +180,14 @@ namespace dbx
 #include "dbParticleGenerator.h"
 #include "dbRoundPosGen.h"
 #include "dbBasicTimeGenerator.h"
+#include "dbBasicPositionGenerator.h"
+
 
 // updaters
 #include "dbParticleUpdater.h"
 #include "dbEulerUpdater.h"
 #include "dbBasicTimeUpdater.h"
+#include "dbAttractorUpdater.h"
 
 // emitters
 #include "dbParticleEmitter.h"

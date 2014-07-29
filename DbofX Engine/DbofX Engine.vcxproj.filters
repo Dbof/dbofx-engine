@@ -188,6 +188,12 @@
     <ClCompile Include="dbParticleEmitter.cpp">
       <Filter>Quelldateien\dbEngine\Classes\particle</Filter>
     </ClCompile>
+    <ClCompile Include="dbBasicPositionGenerator.cpp">
+      <Filter>Quelldateien\dbEngine\Classes\particle</Filter>
+    </ClCompile>
+    <ClCompile Include="dbAttractorUpdater.cpp">
+      <Filter>Quelldateien\dbEngine\Classes\particle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dbDevice.h">
@@ -314,6 +320,12 @@
       <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
     </ClInclude>
     <ClInclude Include="dbBasicTimeUpdater.h">
+      <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
+    </ClInclude>
+    <ClInclude Include="dbAttractorUpdater.h">
+      <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
+    </ClInclude>
+    <ClInclude Include="dbBasicPositionGenerator.h">
       <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
     </ClInclude>
   </ItemGroup>

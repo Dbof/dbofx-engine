@@ -14,6 +14,10 @@ namespace particle
 		dbRoundPosGen(void) {};
 		dbRoundPosGen(const core::dbVector3 &center, double radX, double radY) : center_(center), radX_((float)radX), radY_((float)radY) {}
  
+		void SetCenter(const core::dbVector3& center) { center_ = center; }
+		void SetRadiusX(const float& radius) { radX_ = radius; }
+		void SetRadiusY(const float& radius) { radY_ = radius; }
+
 		virtual void Generate(double dt, dbParticleData *p, size_t startId, size_t endId) override;
 	};
 

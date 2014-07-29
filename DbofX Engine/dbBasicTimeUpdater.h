@@ -12,5 +12,4 @@ namespace particle
 
 		void Update(double delta, dbParticleData* p) override;
 	};
-
 }}	// namespace

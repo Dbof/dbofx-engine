@@ -93,6 +93,8 @@
   <ItemGroup>
     <ClCompile Include="BoneHierarchyLoader.cpp" />
     <ClCompile Include="db2DManager.cpp" />
+    <ClCompile Include="dbAttractorUpdater.cpp" />
+    <ClCompile Include="dbBasicPositionGenerator.cpp" />
     <ClCompile Include="dbBasicTimeGenerator.cpp" />
     <ClCompile Include="dbBasicTimeUpdater.cpp" />
     <ClCompile Include="dbCamera_.cpp">
@@ -153,6 +155,8 @@
   <ItemGroup>
     <ClInclude Include="BoneHierarchyLoader.h" />
     <ClInclude Include="db2DManager.h" />
+    <ClInclude Include="dbAttractorUpdater.h" />
+    <ClInclude Include="dbBasicPositionGenerator.h" />
     <ClInclude Include="dbBasicTimeGenerator.h" />
     <ClInclude Include="dbBasicTimeUpdater.h" />
     <ClInclude Include="dbCamera.h" />
