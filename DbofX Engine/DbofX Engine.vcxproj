@@ -93,7 +93,8 @@
   <ItemGroup>
     <ClCompile Include="BoneHierarchyLoader.cpp" />
     <ClCompile Include="db2DManager.cpp" />
-    <ClCompile Include="dbBasicTimeEmitter.cpp" />
+    <ClCompile Include="dbBasicTimeGenerator.cpp" />
+    <ClCompile Include="dbBasicTimeUpdater.cpp" />
     <ClCompile Include="dbCamera_.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -117,6 +118,7 @@
     <ClCompile Include="DbofX.cpp" />
     <ClCompile Include="dbDevice.cpp" />
     <ClCompile Include="dbMesh.cpp" />
+    <ClCompile Include="dbParticleEmitter.cpp" />
     <ClCompile Include="dbParticleSystem.cpp" />
     <ClCompile Include="dbPointLight.cpp" />
     <ClCompile Include="dbPointRenderer.cpp" />
@@ -151,7 +153,8 @@
   <ItemGroup>
     <ClInclude Include="BoneHierarchyLoader.h" />
     <ClInclude Include="db2DManager.h" />
-    <ClInclude Include="dbBasicTimeEmitter.h" />
+    <ClInclude Include="dbBasicTimeGenerator.h" />
+    <ClInclude Include="dbBasicTimeUpdater.h" />
     <ClInclude Include="dbCamera.h" />
     <ClInclude Include="dbColor.h" />
     <ClInclude Include="dbDevice.h" />
@@ -164,8 +167,11 @@
     <ClInclude Include="dbMatrix.h" />
     <ClInclude Include="dbMesh.h" />
     <ClInclude Include="DbofX.h" />
+    <ClInclude Include="dbParticleEmitter.h" />
+    <ClInclude Include="dbParticleGenerator.h" />
     <ClInclude Include="dbParticleRenderer.h" />
     <ClInclude Include="dbParticleSystem.h" />
+    <ClInclude Include="dbParticleUpdater.h" />
     <ClInclude Include="dbPointLight.h" />
     <ClInclude Include="dbPointRenderer.h" />
     <ClInclude Include="dbPS.h" />

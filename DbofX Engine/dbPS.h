@@ -25,6 +25,7 @@ namespace particle
 		explicit dbParticleData(size_t maxCount) { Generate(maxCount); };
 		~dbParticleData() {};
 
+		DISALLOW_COPY_AND_ASSIGN(dbParticleData);
 		//dbParticleData(const dbParticleData &) = delete;
 		//dbParticleData &operator= (const dbParticleData &) = delete;
 		
@@ -36,39 +37,6 @@ namespace particle
 		void Wake(size_t id);
 		void SwapData(size_t a, size_t b);
 	};
-
-	class DBX_API dbParticleGenerator
-	{
-	public:
-		dbParticleGenerator() {};
-		virtual ~dbParticleGenerator() {};
-
-		virtual void Generate(double delta, dbParticleData* p, size_t startId, size_t endId) = 0;
-	};
-
-	class DBX_API dbParticleEmitter
-	{
-	protected:
-		std::vector<std::shared_ptr<dbParticleGenerator>> generators_;
-		float emitRate_;
-	public:
-		dbParticleEmitter() : emitRate_(0.f) {};
-		~dbParticleEmitter() {};
-
-		// calls all generators and activates particles
-		virtual void Emit(double delta, dbParticleData* p);
-		void AddGenerator(std::shared_ptr<dbParticleGenerator> generator) { generators_.push_back(generator); };
-	};
-
-	class DBX_API dbParticleUpdater
-	{
-	public:
-		dbParticleUpdater() {};
-		virtual ~dbParticleUpdater() {};
-
-		virtual void Update(double delta, dbParticleData* p) = 0;
-	};
-
 
 	class DBX_API dbPS
 	{
@@ -84,6 +52,7 @@ namespace particle
 		explicit dbPS(size_t maxCount);
 		virtual ~dbPS() {};
 
+		DISALLOW_COPY_AND_ASSIGN(dbPS);
 		//dbPS(const dbPS &) = delete;
 		//dbPS &operator=(const dbPS &) = delete;
 

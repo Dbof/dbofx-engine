@@ -176,11 +176,17 @@
     <ClCompile Include="dbTextureRenderer.cpp">
       <Filter>Quelldateien\dbEngine\Classes\particle</Filter>
     </ClCompile>
-    <ClCompile Include="dbBasicTimeEmitter.cpp">
+    <ClCompile Include="dbBasicTimeGenerator.cpp">
       <Filter>Quelldateien\dbEngine\Classes\particle</Filter>
     </ClCompile>
     <ClCompile Include="dbPointRenderer.cpp">
-      <Filter>Quelldateien</Filter>
+      <Filter>Quelldateien\dbEngine\Classes\particle</Filter>
+    </ClCompile>
+    <ClCompile Include="dbBasicTimeUpdater.cpp">
+      <Filter>Quelldateien\dbEngine\Classes\particle</Filter>
+    </ClCompile>
+    <ClCompile Include="dbParticleEmitter.cpp">
+      <Filter>Quelldateien\dbEngine\Classes\particle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -292,10 +298,22 @@
     <ClInclude Include="dbTextureRenderer.h">
       <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
     </ClInclude>
-    <ClInclude Include="dbBasicTimeEmitter.h">
+    <ClInclude Include="dbPointRenderer.h">
       <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
     </ClInclude>
-    <ClInclude Include="dbPointRenderer.h">
+    <ClInclude Include="dbBasicTimeGenerator.h">
+      <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
+    </ClInclude>
+    <ClInclude Include="dbParticleEmitter.h">
+      <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
+    </ClInclude>
+    <ClInclude Include="dbParticleGenerator.h">
+      <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
+    </ClInclude>
+    <ClInclude Include="dbParticleUpdater.h">
+      <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
+    </ClInclude>
+    <ClInclude Include="dbBasicTimeUpdater.h">
       <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
     </ClInclude>
   </ItemGroup>

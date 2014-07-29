@@ -52,22 +52,6 @@ namespace particle
 			std::swap(time_[a], time_[b]);
 			std::swap(alive_[a], alive_[b]);
 		}
-	////////////////////////////////////////////////////////////////////////////////
-	// dbParticleEmitter class
- 	void dbParticleEmitter::Emit(double delta, dbParticleData *p)
-	{
-		const size_t maxNewParticles = static_cast<size_t>(delta * emitRate_);
-		const size_t startId = p->GetCountAlive();
-		const size_t endId = min(startId + maxNewParticles, p->GetCount() -1);
- 
-		for (auto &gen : generators_)
-			gen->Generate(delta, p, startId, endId);
- 
-		for (size_t i = startId; i < endId; ++i)
-		{
-			p->Wake(i);
-		}
-	}
 
 	////////////////////////////////////////////////////////////////////////////////
 	// dbParticleSystem class 

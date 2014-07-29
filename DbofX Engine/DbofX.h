@@ -103,6 +103,13 @@ namespace dbx
 		class dbError;
 		class dbMatrix;
 	}
+	namespace particle
+	{
+		class dbParticleRenderer;
+		class dbParticleEmitter;
+		class dbParticleGenerator;
+		class dbParticleUpdater;
+	}
 	namespace scene 
 	{
 		class dbScene;
@@ -163,12 +170,25 @@ namespace dbx
 #include "dbSkinnedMesh.h"
 
 #include "dbPS.h"
+
+// renderer
 #include "dbParticleRenderer.h"
-#include "dbRoundPosGen.h"
-#include "dbEulerUpdater.h"
 #include "dbTextureRenderer.h"
 #include "dbPointRenderer.h"
-#include "dbBasicTimeEmitter.h"
+
+// generators
+#include "dbParticleGenerator.h"
+#include "dbRoundPosGen.h"
+#include "dbBasicTimeGenerator.h"
+
+// updaters
+#include "dbParticleUpdater.h"
+#include "dbEulerUpdater.h"
+#include "dbBasicTimeUpdater.h"
+
+// emitters
+#include "dbParticleEmitter.h"
+
 
 namespace dbx
 {
