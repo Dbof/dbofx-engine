@@ -293,10 +293,10 @@
       <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
     </ClInclude>
     <ClInclude Include="dbBasicTimeEmitter.h">
-      <Filter>Headerdateien</Filter>
+      <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
     </ClInclude>
     <ClInclude Include="dbPointRenderer.h">
-      <Filter>Headerdateien</Filter>
+      <Filter>Headerdateien\dbEngine\Classes\particle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

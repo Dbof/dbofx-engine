@@ -91,7 +91,8 @@ namespace particle
 
 		for (size_t i = 0; i < count_; ++i)
 		{
-			particles_.acceleration_[i] = core::dbVector3();
+			core::dbVector3 zero;
+			particles_.acceleration_[i] = zero;
 		}
 
 		for (auto& up : updaters_)

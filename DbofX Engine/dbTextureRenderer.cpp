@@ -47,7 +47,7 @@ namespace particle
 	
 		hr = d3ddev->SetFVF(dbTextureParticle::FVF);
 		hr = d3ddev->SetStreamSource(0, vertex_buffer_.GetVB(), 0, sizeof(dbTextureParticle));
-		hr = d3ddev->DrawPrimitive(D3DPT_TRIANGLELIST, 0, system_->GetAliveParticleCount());
+		hr = d3ddev->DrawPrimitive(D3DPT_TRIANGLELIST, 0, system_->GetAliveParticleCount() * 2);
 		
 		dbDevice::SetRenderState(D3DRS_ALPHABLENDENABLE, false);
 		dbDevice::enableLighting(true);

@@ -39,7 +39,7 @@ namespace core
 		void*					back_buffer_;
 		int						vertex_buffer_size_;		// in bytes
 		int						vertex_size_;			
-		int						vertex_number_;
+		//int						vertex_number_;
 		int						max_vertices_;
 		DWORD					d3d_fvf_;
 		DWORD					d3d_usage_;

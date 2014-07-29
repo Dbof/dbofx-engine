@@ -49,9 +49,10 @@ void dbVertexBuffer::OnResetDevice()
 		dbVertexBuffer* buf = vertex_buffer_arr_[i];
 		if (buf->d3d_pool == D3DPOOL_DEFAULT)
 		{
-			void* tmp_buffer = malloc(buf->vertex_size_ * buf->vertex_number_);
-			memcpy(tmp_buffer, buf->back_buffer_, buf->vertex_size_ * buf->vertex_number_);
-			int num = buf->vertex_number_;
+			long vertex_number = buf->last_vertex_ - buf->first_vertex_ + 1;
+			void* tmp_buffer = malloc(buf->vertex_size_ * vertex_number);
+			memcpy(tmp_buffer, buf->back_buffer_, buf->vertex_size_ * vertex_number);
+			int num = vertex_number;
 			buf->SetCursor(0);
 			buf->Init(buf->vertex_buffer_size_, buf->vertex_size_, buf->d3d_fvf_, buf->d3d_usage_, buf->d3d_pool);
 			buf->AddVertices(num, tmp_buffer);
@@ -114,7 +115,7 @@ bool dbVertexBuffer::Init(int vbsize, int vertexsize, DWORD d3d_fvf, DWORD d3d_u
 	// this decreases the counter if init() succeeds
 	tmp_vertex_buffer_->Release();
 
-	vertex_number_ = 0;
+	//vertex_number_ = 0;
 	// add to manager
 	if (!is_init_)
 	{
@@ -181,7 +182,7 @@ int dbVertexBuffer::AddVertex(void* pVertex)
 	if (cursor_ < first_vertex_) first_vertex_ = cursor_;
 	if (cursor_ > last_vertex_) last_vertex_ = cursor_;
 
-	vertex_number_++;
+//	vertex_number_++;
 	return cursor_++;
 }
 
@@ -196,14 +197,13 @@ int dbVertexBuffer::AddVertices(int numVertices, void* pVertex)
 	if (cursor_ + numVertices -1 > last_vertex_) last_vertex_ = cursor_ + numVertices - 1;
 
 	cursor_ += numVertices;
-	vertex_number_ += numVertices;
+//	vertex_number_ += numVertices;
 	return cursor_ - numVertices;
 }
 
 bool dbVertexBuffer::SetCursor(int newpos)
 {
 	cursor_ = newpos;
-	vertex_number_ = 0;
 	return true;
 }
 

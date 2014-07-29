@@ -1,7 +1,13 @@
 #include "DbofX.h"
-
 #include <ctime>
 #include <fstream>
+#include <iostream>
+
+#ifdef _DEBUG
+#pragma comment(lib, "DbofX_D.lib")
+#else
+#pragma comment(lib, "DbofX.lib")
+#endif
 
 using std::cout;
 using std::cin;
@@ -11,6 +17,7 @@ using namespace dbx;
 using namespace scene;
 using namespace res;
 using namespace core;
+using namespace video;
 
 // global objects
 dbCamera* cam;
@@ -21,7 +28,12 @@ dbTerrain terrain;
 dbTextureManager* TMan;
 dbFontObject* Text;
 
+particle::dbPS psystem(100000);
+particle::dbTextureRenderer renderer;
+
 dbSkinnedMesh* skinned;
+
+std::string path_mesh = "../meshes/";
 
 // boolean
 std::string instructions = "Press F1 to enable wireframe, F2 for solid mode\n\
@@ -50,27 +62,29 @@ float mid = 0.1f;
 
 void initTexture()
 {
-	TMan->AddTexture(TEX_2D, "water.jpg", true, true, dbColor(0.f));
-	TMan->AddTexture(TEX_2D, "rock.jpg", true, true);
-	TMan->AddTexture(TEX_2D, "wall.jpg", true, true);
-	TMan->AddTexture(TEX_2D, "ando.png", true, true, dbColor(1.f, 0.f, 1.f));
-	TMan->AddTexture(TEX_2D, "andoisawesome.png", true, true, dbColor(1.f, 0.f, 1.f));
-	TMan->AddTexture(TEX_2D, "slender.png", true, true);
+	TMan->AddTexture(TEX_2D, path_mesh+"water.jpg", true, true, dbColor(0.f));
+	TMan->AddTexture(TEX_2D, path_mesh+"rock.jpg", true, true);
+	TMan->AddTexture(TEX_2D, path_mesh+"wall.jpg", true, true);
+	TMan->AddTexture(TEX_2D, path_mesh+"ando.png", true, true, dbColor(1.f, 0.f, 1.f));
+	TMan->AddTexture(TEX_2D, path_mesh+"andoisawesome.png", true, true, dbColor(1.f, 0.f, 1.f));
+	TMan->AddTexture(TEX_2D, path_mesh+"slender.png", true, true);
+	TMan->AddTexture(TEX_2D, path_mesh+"fire.png", true, true, dbColor(1.f));
 }
 
 void InitMesh()
 {
-	thescene->AddMesh("Office", "office.x")->Scale(dbVector3(10.f, 10.f, 10.f));
-	skybox = thescene->AddSkybox("cloudy.dds");
+	thescene->AddMesh("Office", path_mesh+"office.x")->Scale(dbVector3(10.f, 10.f, 10.f));
+	skybox = thescene->AddSkybox(path_mesh+"cloudy.dds");
 
-	dbMesh* male = thescene->AddMesh("Sonic", "sonic.x");
+	dbMesh* male = thescene->AddMesh("Sonic", path_mesh+"sonic.x");
 	male->Scale(dbVector3(5.f, 5.f, 5.f));
 	male->SetPos(dbVector3(-10.f, 0.f, 0.f));
 	male->RotateY(DB_TO_RAD(180));
 
-	skinned = new dbSkinnedMesh();
-	skinned->Load("anim_girl.x");
-	Bone* b = skinned->GetRoot();
+	skinned = new dbSkinnedMesh("Animated Girl");
+	skinned->Init(path_mesh+"anim_girl.x");
+	skinned->Scale(dbVector3(0.25f,0.25f,0.25f));
+	skinned->SetPos(dbVector3(0.f, 7.f, 0.f));
 }
 
 bool Exit()
@@ -111,9 +125,9 @@ bool Move()
 		while (GetAsyncKeyState(VK_F5));
 	}
 	if (GetAsyncKeyState(VK_F6))
-
-	{particleSystem->AddParticle(10.f, cam->GetPos() + cam->GetDirection(),
-	cam->GetDirection() * 10.f, 1.5f, 10.f, 1.f, dbColor(1.f, 1.f, 1.f, 0.2f), dbColor(1.f, 1.f, 1.f, 0.f));
+	{
+		particleSystem->AddParticle(10.f, cam->GetPos() + cam->GetDirection(),
+			cam->GetDirection() * 10.f, 1.5f, 10.f, 1.f, dbColor(1.f, 1.f, 1.f, 0.2f), dbColor(1.f, 1.f, 1.f, 0.f));
 	}
 
 	if (GetAsyncKeyState(VK_F10))
@@ -150,11 +164,6 @@ bool Move()
 		cam->SetDirection(dbVector3(0.f, 0.f, 1.f));
 		cam->SetPos(dbVector3(0.f, 10.f, -20.f));
 	}
-	
-	D3DXMATRIX mat, mat2;
-	D3DXMatrixIdentity(&mat);
-	D3DXMatrixScaling(&mat, 0.05f, 0.05f, 0.05f);
-	skinned->UpdateMatrices(skinned->GetRoot(), &mat);
 
 	if (GetAsyncKeyState(VK_SPACE))
 	{
@@ -165,7 +174,7 @@ bool Move()
 		Bone* b = skinned->FindBone("Armature_testa");
 		if (b != NULL)
 		{
-			skinned->SetTransform(b, dbMatrixRotationY(DB_TO_RAD(f)), true);
+			skinned->SetBoneTransform(b, dbMatrixRotationY(DB_TO_RAD(f)), true);
 
 			if (toright)
 				f += 4;
@@ -179,16 +188,18 @@ bool Move()
 		}
 	}
 
+	/*
 	// particle system
-	int max = getRandomInt(1, 100);
+	int max = getRandomInt(5000, 5000);
 	for (int i = 0; i < max; i++)
 		particleSystem->AddParticle(1.5f,
 		dbVector3(getRandomFloat(-50, 50), getRandomFloat(9.f, 30.f, 2), getRandomFloat(-50.f, 50.f)), 
 		dbVector3(0.f, -10.f, 0.f), 1.f,
-		0.2f, 0.4f, 
-		dbColor(1.f), dbColor(0.6f)); 
-	
+		0.2f, 0.1f, 
+		dbColor(1.f), dbColor(0.5f)); 
 	particleSystem->Move(anim_rate);
+	*/
+	psystem.Update(anim_rate);
 
 	// camera movement
 	if (GetAsyncKeyState(VK_UP))
@@ -249,7 +260,7 @@ bool Move()
 		slender_light = 0.f;
 
 	cam->Update(anim_rate);
-	skinned->Move(anim_rate);
+	skinned->Animate(anim_rate);
 	return true;
 }
 
@@ -277,8 +288,8 @@ bool Render()
 	dbDevice::setTexture(NULL);
 	sonic->Render(-1, true, true);
 
-	
-	dbDevice::setTransform(dbMatrixTranslation(dbVector3(0.f, 1.75f, 0.f)) * dbMatrixScaling(dbVector3(8.f, 8.f, 8.f)));
+	// skinned girl
+	dbDevice::setTransform(skinned->GetMatrix());	// dbMatrixIdentity()
 	skinned->Render(NULL);
 
 	// android text
@@ -293,10 +304,17 @@ bool Render()
 	video::db2DManager::GetInstance()->SetScaling(dbVector3(0.04f, 0.04f, 0));
 	video::db2DManager::GetInstance()->DrawBillboard(TMan->SearchTexture("slender.png"), NULL, dbVector3(256, 6.f, 256.f), dbColor(slender_light), true);
 
+	/*
 	// rain (Particle system)
 	dbDevice::setTransform(dbMatrixIdentity());
 	dbDevice::setTexture(TMan->SearchTexture("water.jpg"));
 	particleSystem->Render();
+	*/
+	
+	dbDevice::setTransform(dbMatrixIdentity());
+	dbDevice::setTexture(TMan->SearchTexture("fire.png"));
+	renderer.Render();
+	
 
 	// timer calculates fps
 	static int fps = 0;	static int timer = 0;
@@ -306,7 +324,7 @@ bool Render()
 	// draw some data on-screen
 	dbLight* red = thescene->GetLight("Redlight");
 	Text->Draw("FPS: " + toString( fps ), dbColor(1.f), 10, 10, -1, -1);
-	Text->Draw("Particle number: " + toString( particleSystem->GetParticleNumber() ), dbColor(0.f, 0.25f, 1.f), 30, 10, -1, -1);
+	Text->Draw("Particle number: " + toString( (int)psystem.GetAliveParticleCount() ), dbColor(0.f, 0.25f, 1.f), 30, 10, -1, -1);
 	Text->Draw(instructions, dbColor(1.f, 0.f, 0.f), 50, 10, -1, -1);
 	
 	// draw everything
@@ -346,10 +364,10 @@ int main()
 	cam = thescene->AddCamera("Camera", dbVector3(0.f, 10.f, -20.f), dbVector3(0.f, 0.f, 1.f));
 
 	//// init the "sun"
-	thescene->AddDirectionalLight("Sun", dbVector3(0.f, -1.f, 0.f), dbColor(1.f), dbColor(0.f), dbColor(0.1f));
+	thescene->AddDirectionalLight("Sun", dbVector3(0.f, -1.f, 0.f), dbColor(1.f), dbColor(0.f), dbColor(0.25f));
 	thescene->GetLight("Sun")->SetVisible(enable_sun);
 
-	thescene->AddSpotLight("Spot", dbVector3(0.f, 0.f, 0.f), dbVector3(0.f, 1.f, 1.f), 500.f, DB_TO_RAD(40), light_outer, dbColor(2.f), dbColor(1.f), dbColor(0.f));
+	thescene->AddSpotLight("Spot", dbVector3(0.f, 0.f, 0.f), dbVector3(0.f, 1.f, 1.f), 500.f, DB_TO_RAD(40), light_outer, dbColor(2.f), dbColor(1.f), dbColor(0.2f));
 	thescene->GetLight("Spot")->SetVisible(true);
 
 	// init a point light
@@ -358,16 +376,27 @@ int main()
 
 	// init particle system
 	particleSystem = video::dbParticleSystem::GetInstance();
-	particleSystem->Init(5000);
+	particleSystem->Init(6000);
 	
-	for (int i = 0; i < 100; i++)
-		particleSystem->AddParticle(getRandomFloat(1.f, 5.f),
-			dbVector3(getRandomFloat(-1.f, 1.f, 2), 0.01f, 0), 
+	
+	std::shared_ptr<particle::dbParticleEmitter> emitter(new particle::dbBasicTimeEmitter(5000));
+	std::shared_ptr<particle::dbEulerUpdater> updater(new particle::dbEulerUpdater());
+	std::shared_ptr<particle::dbRoundPosGen> gen(new particle::dbRoundPosGen(dbVector3(0.f, 0.f, 0.f), 10.f, 10.f));
+	emitter->AddGenerator(gen);
+	psystem.AddEmitter(emitter);
+	psystem.AddUpdater(updater);
+
+	renderer.Generate(&psystem, false);
+	renderer.Update();
+	
+	for (int i = 0; i < 200; i++)
+		particleSystem->AddParticle(getRandomFloat(0.5f, 4.f),
+			dbVector3(getRandomFloat(-1.f, 1.f, 2), 0.02f, 0), 
 			dbVector3(getRandomFloat(-1.f, 1.f), getRandomFloat(0.5f, 1.5f, 2), 0), 1.f,
-			0.05f, 0.5f, dbColor(1.f), dbColor(0.f));
+			0.05f, 0.5f, dbColor(1.f), dbColor(0.2f));
 
 	// terrain
-	bool result = terrain.Init("heightmap.bmp", HT_BMP, 15.f);
+	bool result = terrain.Init((path_mesh+"heightmap.bmp").c_str(), HT_BMP, 15.f);
 	if (!result)
 	{
 		dbExit();

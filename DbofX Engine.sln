@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DbofX Engine", "DbofX Engine\DbofX Engine.vcxproj", "{5E5763D6-9ECD-4522-9C3A-98562317F92E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DbofX Engine Testproject", "DbofX Engine Testproject\DbofX Engine Testproject.vcxproj", "{F5A0E1CD-1365-46C4-9856-FF8343F1CB2A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E5763D6-9ECD-4522-9C3A-98562317F92E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5E5763D6-9ECD-4522-9C3A-98562317F92E}.Debug|Win32.Build.0 = Debug|Win32
+		{5E5763D6-9ECD-4522-9C3A-98562317F92E}.Release|Win32.ActiveCfg = Release|Win32
+		{5E5763D6-9ECD-4522-9C3A-98562317F92E}.Release|Win32.Build.0 = Release|Win32
+		{F5A0E1CD-1365-46C4-9856-FF8343F1CB2A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F5A0E1CD-1365-46C4-9856-FF8343F1CB2A}.Debug|Win32.Build.0 = Debug|Win32
+		{F5A0E1CD-1365-46C4-9856-FF8343F1CB2A}.Release|Win32.ActiveCfg = Release|Win32
+		{F5A0E1CD-1365-46C4-9856-FF8343F1CB2A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
