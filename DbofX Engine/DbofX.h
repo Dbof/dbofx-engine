@@ -178,9 +178,10 @@ namespace dbx
 
 // generators
 #include "dbParticleGenerator.h"
-#include "dbRoundPosGen.h"
+#include "dbRoundPosGenerator.h"
 #include "dbBasicTimeGenerator.h"
 #include "dbBasicPositionGenerator.h"
+#include "dbBasicSpeedGenerator.h"
 
 
 // updaters

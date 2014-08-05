@@ -1,5 +1,5 @@
-#ifndef _LIGHT_MANAGER_H
-#define _LIGHT_MANAGER_H
+#ifndef LIGHT_MANAGER_H
+#define LIGHT_MANAGER_H
 
 namespace dbx
 {

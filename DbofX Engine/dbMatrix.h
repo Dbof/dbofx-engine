@@ -1,5 +1,5 @@
-#ifndef _MATRIX_H
-#define _MATRIX_H
+#ifndef MATRIX_H
+#define MATRIX_H
 
 namespace dbx
 {

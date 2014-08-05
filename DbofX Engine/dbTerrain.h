@@ -1,5 +1,5 @@
-#ifndef _TERRAIN_H
-#define _TERRAIN_H
+#ifndef TERRAIN_H
+#define TERRAIN_H
 
 namespace dbx
 {

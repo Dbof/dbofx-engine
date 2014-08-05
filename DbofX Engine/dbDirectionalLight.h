@@ -1,5 +1,5 @@
-#ifndef _DIRECTIONAL_LIGHT_H
-#define _DIRECTIONAL_LIGHT_H
+#ifndef DIRECTIONAL_LIGHT_H
+#define DIRECTIONAL_LIGHT_H
 
 namespace dbx
 {

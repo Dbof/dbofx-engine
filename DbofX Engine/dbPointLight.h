@@ -1,5 +1,5 @@
-#ifndef _POINT_LIGHT_H
-#define _POINT_LIGHT_H
+#ifndef POINT_LIGHT_H
+#define POINT_LIGHT_H
 
 namespace dbx
 {

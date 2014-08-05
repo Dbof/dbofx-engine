@@ -1,5 +1,5 @@
-#ifndef _SKINNED_MESH_H
-#define _SKINNED_MESH_H
+#ifndef SKINNED_MESH_H
+#define SKINNED_MESH_H
 
 namespace dbx 
 {

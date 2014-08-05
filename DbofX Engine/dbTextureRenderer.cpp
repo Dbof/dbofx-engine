@@ -63,7 +63,7 @@ namespace particle
 			// add to vertex buffer
 			dbTextureParticle vertex[4];
 			
-			float size = 1.f;
+			float size = 0.2f;
 			dbVector3 position = system_->GetData()->position_[i];
 			dbColor color = system_->GetData()->color_[i];
 			

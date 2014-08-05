@@ -95,6 +95,7 @@
     <ClCompile Include="db2DManager.cpp" />
     <ClCompile Include="dbAttractorUpdater.cpp" />
     <ClCompile Include="dbBasicPositionGenerator.cpp" />
+    <ClCompile Include="dbBasicSpeedGenerator.cpp" />
     <ClCompile Include="dbBasicTimeGenerator.cpp" />
     <ClCompile Include="dbBasicTimeUpdater.cpp" />
     <ClCompile Include="dbCamera_.cpp">
@@ -125,7 +126,7 @@
     <ClCompile Include="dbPointLight.cpp" />
     <ClCompile Include="dbPointRenderer.cpp" />
     <ClCompile Include="dbPS.cpp" />
-    <ClCompile Include="dbRoundPosGen.cpp" />
+    <ClCompile Include="dbRoundPosGenerator.cpp" />
     <ClCompile Include="dbSceneMgr.cpp" />
     <ClCompile Include="dbSceneNode.cpp" />
     <ClCompile Include="dbSceneNode_.cpp">
@@ -157,6 +158,7 @@
     <ClInclude Include="db2DManager.h" />
     <ClInclude Include="dbAttractorUpdater.h" />
     <ClInclude Include="dbBasicPositionGenerator.h" />
+    <ClInclude Include="dbBasicSpeedGenerator.h" />
     <ClInclude Include="dbBasicTimeGenerator.h" />
     <ClInclude Include="dbBasicTimeUpdater.h" />
     <ClInclude Include="dbCamera.h" />
@@ -179,7 +181,7 @@
     <ClInclude Include="dbPointLight.h" />
     <ClInclude Include="dbPointRenderer.h" />
     <ClInclude Include="dbPS.h" />
-    <ClInclude Include="dbRoundPosGen.h" />
+    <ClInclude Include="dbRoundPosGenerator.h" />
     <ClInclude Include="dbSceneMgr.h" />
     <ClInclude Include="dbSceneNode__.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

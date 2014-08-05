@@ -1,5 +1,5 @@
-#ifndef _MESH_H
-#define _MESH_H
+#ifndef MESH_H
+#define MESH_H
 
 namespace dbx
 {

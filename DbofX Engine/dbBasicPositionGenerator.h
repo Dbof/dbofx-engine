@@ -1,20 +1,23 @@
+#ifndef BASICPOSITION_GENERATOR_H
+#define BASICPOSITION_GENERATOR_H
 
 namespace dbx
 {
-namespace particle
-{
-	class DBX_API dbBasicPositionGenerator : public dbParticleGenerator
+	namespace particle
 	{
-	private:
-		core::dbVector3 position_;
-	public:
-		explicit dbBasicPositionGenerator(const core::dbVector3& pos) : position_(pos) {}
-		~dbBasicPositionGenerator(void);
-		
-		void SetPosition(const core::dbVector3& pos) { position_ = pos; }
+		class DBX_API dbBasicPositionGenerator : public dbParticleGenerator
+		{
+		private:
+			core::dbVector3 position_;
+		public:
+			explicit dbBasicPositionGenerator(const core::dbVector3& pos) : position_(pos) {}
+			~dbBasicPositionGenerator(void);
 
-		// calls all generators and activates particles
-		void Generate(double delta, dbParticleData* p, size_t startId, size_t endId) override;
-	};
+			void SetPosition(const core::dbVector3& pos) { position_ = pos; }
 
-}}	// namespace
+			// calls all generators and activates particles
+			void Generate(double delta, dbParticleData* p, size_t startId, size_t endId) override;
+		};
+
+	}}	// namespace  
+#endif // !BASICPOSITION_GENERATOR_H

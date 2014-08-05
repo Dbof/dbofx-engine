@@ -13,8 +13,7 @@ namespace particle
 		const size_t endId = p->count_;
 		const size_t countAttractors = attractors_.size();
 		core::dbVector3 off;
-		
-		float dist;
+
 		for (size_t i = 0; i < endId; ++i)
 		{
 			for (size_t a = 0; a < countAttractors; ++a)

@@ -1,5 +1,5 @@
-#ifndef _TEXTMGR_H
-#define _TEXTMGR_H
+#ifndef TEXTMGR_H
+#define TEXTMGR_H
 
 namespace dbx
 {

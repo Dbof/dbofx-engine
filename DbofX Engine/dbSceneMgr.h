@@ -1,5 +1,5 @@
-#ifndef _SCENE_MGR_H
-#define _SCENE_MGR_H
+#ifndef SCENE_MGR_H
+#define SCENE_MGR_H
 
 namespace dbx
 {

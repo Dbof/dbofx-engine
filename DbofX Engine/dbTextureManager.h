@@ -1,5 +1,5 @@
-#ifndef _TEXTUREMGR_H
-#define _TEXTUREMGR_H
+#ifndef TEXTUREMGR_H
+#define TEXTUREMGR_H
 
 namespace dbx
 {

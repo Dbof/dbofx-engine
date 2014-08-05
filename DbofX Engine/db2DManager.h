@@ -1,5 +1,5 @@
-#ifndef _2D_MANAGER_H
-#define _2D_MANAGER_H
+#ifndef D2D_MANAGER_H
+#define D2D_MANAGER_H
 
 namespace dbx
 {
