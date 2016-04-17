@@ -4,11 +4,11 @@ DbofX Engine
 The DbofX Engine is a 3D game engine built to facilitate the creation of 3D games and graphics.
 The engine works with DirectX 9, which is pretty old right now, since DX11 already exists, but still widely used within a lot of projects.
 
-This project was started in 2010 and was worked on since then. 
+This project was started in 2010 and was worked on since then. The project is **discontinued**.
 
-The current features will be released in the future, same with a good documentation on how to use it.
 
-Features:
+#Features
+General:
 - Windows-only, later support of OpenGL and other operating systems not planned.
 - Fully coded in C++, pretty easy to use
 - Easy to set up
@@ -47,3 +47,9 @@ Misc:
 - Fast and easy to use math functions and containers
 - Fully integrated logging/error system with automatic console outputs
 - Windows console is fully integrated into the engine
+
+#Screenshots
+![Screenshot 1](/screenshots/screenshot.jpg)
+![Screenshot 2](/screenshots/screenshot0.jpg)
+![Screenshot 3](/screenshots/screenshot1.jpg)
+![Screenshot 4](/screenshots/screenshot2.jpg)
