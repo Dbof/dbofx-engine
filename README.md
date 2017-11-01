@@ -7,8 +7,16 @@ The engine works with DirectX 9, which is pretty old right now, since DX11 alrea
 This project was started in 2010 and was worked on since then. The project is **discontinued**.
 
 
-#Features
-General:
+# Screenshots
+
+![Screenshot 1](/screenshots/screenshot.jpg)
+![Screenshot 2](/screenshots/screenshot0.jpg)
+![Screenshot 3](/screenshots/screenshot1.jpg)
+![Screenshot 4](/screenshots/screenshot2.jpg)
+
+# Features
+
+## General:
 - Windows-only, later support of OpenGL and other operating systems not planned.
 - Fully coded in C++, pretty easy to use
 - Easy to set up
@@ -18,7 +26,7 @@ General:
 - Easy DirectX setup, most of the work is done for you
 - Uses its own window, but can be integrated in any other custom window
 
-Meshes:
+## Meshes:
 - Basic 3D model support in .x Format
 - Every model is handled the same way, so move methods can be applied to a whole group of objects
 - Models can be attached to scene nodes for easier handling of mesh groups.
@@ -28,13 +36,13 @@ Meshes:
 - Support for skinned meshes and skeletal animation 
 - 2D sprite support and billboards
 
-Scene:
+## Scene:
 - Fully flexible scene management
 - Camera can be managed like any other 3D model, rotation, viewport settings and much more
 - Hierarchical scene graph with scene nodes, objects can be attached to each other
 - Support directional light, spot lights and point lights, fully customizable and automatically managed for you
 
-Special effects:
+## Special effects:
 - Contains easy-to-use particle system with very precise control over what is drawn and how
 - Support for skyboxes in DDS format
 - Billboarding for 2D sprites
@@ -43,13 +51,7 @@ Special effects:
 - Supports vertex and pixel fog effects
 - Support for 2D onscreen text, useful for HUD screens
 
-Misc:
+## Misc:
 - Fast and easy to use math functions and containers
 - Fully integrated logging/error system with automatic console outputs
 - Windows console is fully integrated into the engine
-
-#Screenshots
-![Screenshot 1](/screenshots/screenshot.jpg)
-![Screenshot 2](/screenshots/screenshot0.jpg)
-![Screenshot 3](/screenshots/screenshot1.jpg)
-![Screenshot 4](/screenshots/screenshot2.jpg)
